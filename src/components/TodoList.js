@@ -1,8 +1,9 @@
 import React from "react";
-import { useSelector } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
+import { doneTodo, removeTodo } from "../redux/actions";
 function TodoList() {
   const todos = useSelector((state) => state.todo);
+  const dispatch = useDispatch();
   return (
     <div
       style={{
@@ -22,12 +23,18 @@ function TodoList() {
           key={todo.id}
         >
           <div style={{ display: "flex", alignItems: "center" }}>
-            <input type="checkbox" checked={todo.completed} />
+            <input
+              type="checkbox"
+              checked={todo.completed}
+              onChange={() => dispatch(doneTodo(todo))}
+            />
             <h4>{todo.name}</h4>
           </div>
           <div>
             <button> Edit </button>
-            <button> Delete </button>
+            <button onClick={() => dispatch(removeTodo(todo.id))}>
+              Delete
+            </button>
           </div>
         </div>
       ))}

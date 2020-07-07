@@ -11,7 +11,25 @@ const todoInitialState = [
 const todoReducer = (state = todoInitialState, action) => {
   switch (action.type) {
     case "ADD_TODO":
-      return state;
+      const newTodo = {
+        id: uuidv4(),
+        name: action.payload,
+        completed: false,
+      };
+      return [...state, newTodo];
+
+    case "DONE_TODO":
+      const isCompleted = state.map((todo) =>
+        todo.id === action.payload.id
+          ? { ...action.payload, completed: !action.payload.completed }
+          : todo
+      );
+      return [...isCompleted];
+
+    case "REMOVE_TODO":
+      const removedTodo = state.filter((todo) => todo.id !== action.payload);
+      return [...removedTodo];
+
     default:
       return state;
   }
