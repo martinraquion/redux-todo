@@ -6,7 +6,8 @@ function TodoForm() {
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addTodo(newTodo));
+    newTodo && dispatch(addTodo(newTodo));
+    setNewTodo("");
   };
   return (
     <div>

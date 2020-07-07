@@ -30,6 +30,14 @@ const todoReducer = (state = todoInitialState, action) => {
       const removedTodo = state.filter((todo) => todo.id !== action.payload);
       return [...removedTodo];
 
+    case "EDIT_TODO":
+      const editedTodo = state.map((todo) =>
+        todo.id === action.payload.id
+          ? { ...action.payload, name: action.newName }
+          : todo
+      );
+      return [...editedTodo];
+
     default:
       return state;
   }

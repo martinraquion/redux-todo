@@ -18,3 +18,11 @@ export const removeTodo = (id) => {
     payload: id,
   };
 };
+
+export const editTodo = (todo, newName) => {
+  return {
+    type: "EDIT_TODO",
+    payload: todo,
+    newName: newName,
+  };
+};
