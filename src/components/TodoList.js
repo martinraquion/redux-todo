@@ -41,7 +41,13 @@ function TodoList() {
                 checked={todo.completed}
                 onChange={() => dispatch(doneTodo(todo))}
               />
-              <h4>{todo.name}</h4>
+              <h4
+                style={{
+                  textDecoration: todo.completed ? "line-through" : "none",
+                }}
+              >
+                {todo.name}
+              </h4>
             </div>
             <div>
               <button onClick={() => handleEditToggle(todo.id)}>Edit</button>
