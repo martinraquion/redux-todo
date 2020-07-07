@@ -59,6 +59,7 @@ function TodoList() {
           {editToggle && selectedId === todo.id && (
             <form onSubmit={(e) => handleEdit(e, todo)}>
               <input
+                defaultValue={todo.name}
                 type="text"
                 onChange={(e) => setEditName(e.target.value)}
               />
