@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 const todoInitialState = [
   {
     id: uuidv4(),
-    name: "Initial Todo",
+    name: "Buy milk",
     completed: false,
   },
 ];
